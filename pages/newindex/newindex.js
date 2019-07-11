@@ -3,6 +3,7 @@ var app = getApp();
 
 
 Page({
+
   data: {
     winHeight: "", //窗口高度
     currentTab: 0, //预设当前项的值
@@ -13,11 +14,12 @@ Page({
       soure: "新华网",
       time: 134,
     }],
-    type:['国内','国际','军事','体育','娱乐','其它'],
-    typeCode:['gn','gj','js','ty','yl','qt'],
+    type: ['国内', '国际', '军事', '体育', '娱乐', '其它'],
+    typeCode: ['gn', 'gj', 'js', 'ty', 'yl', 'qt'],
     statusBarHeight: 0,
     navBarHeight: 0,
   },
+
   // 滚动切换标签样式
   switchTab: function(e) {
     this.setData({
@@ -25,6 +27,7 @@ Page({
     });
     // this.checkCor();
   },
+
   // 点击标题切换当前页时改变样式
   swichNav: function(e) {
     var cur = e.target.dataset.current;
@@ -37,25 +40,11 @@ Page({
     }
   },
 
-  // //判断当前滚动超过一屏时，设置tab标题滚动条。
-  // checkCor: function() {
-  //   if (this.data.currentTab > 4) {
-  //     this.setData({
-  //       scrollLeft: 300
-  //     })
-  //   } else {
-  //     this.setData({
-  //       scrollLeft: 0
-  //     })
-  //   }
-  // },
-
   onLoad: function() {
-
     var that = this;
-  // 获取bar高度
+    // 获取bar高度
     wx.getSystemInfo({
-      success: function (res) {
+      success: function(res) {
         let navBarHeight = 0
         if (res.model.indexOf('iPhone') !== -1) {
           navBarHeight = 44
@@ -74,6 +63,7 @@ Page({
         });
       }
     })
+
     //  高度自适应
     wx.getSystemInfo({
       success: function(res) {
@@ -91,25 +81,48 @@ Page({
     // 获取scrollview的margin-top
     var query = wx.createSelectorQuery();
     query.select('.tab-h').boundingClientRect()
-    query.exec(function (res) {
+    query.exec(function(res) {
       that.setData({
-        marginTop:res[0].bottom
+        marginTop: res[0].bottom
       })
       console.log(res[0].bottom)
     })
-    
+
     var typeCode = this.data.typeCode
+
+
     //获取接口数据
+
     wx.request({
-      url: 'https://test-miniprogram.com/api/news/list', 
+      url: 'https://test-miniprogram.com/api/news/list',
       data: {
-      type: typeCode[0]
+        type: typeCode[0]
       },
       success: res => {
-        console.log(res.data)
+        that.setTop(res)
       }
     })
 
   },
-  footerTap: app.footerTap
+
+  setTop:function(e){
+    console.log(e)
+    let title = e.data.result[0].title
+    console.log("title:" + title)
+
+    // let nowHour = new Date().getHours()
+    // let forecast = res.data.result.forecast
+    // let hourWeather = []
+
+    // //设置每小时天气列表
+    // for (let i = 0; i < 8; i += 1) {
+    //   hourWeather.push({
+    //     time: (i * 3 + nowHour) % 24 + "时",
+    //     iconPath: '/images/' + forecast[i].weather + '-icon.png',
+    //     temp: forecast[i].temp + '°'
+    //   })
+    // }
+  }
+
+  // footerTap: app.footerTap
 })

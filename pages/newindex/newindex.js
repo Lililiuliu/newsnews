@@ -1,3 +1,4 @@
+//测试github
 var app = getApp();
 
 

@@ -1,6 +1,7 @@
 {
   "pages": [
-    "pages/newindex/newindex"
+    "pages/newindex/newindex",
+    "pages/content/content"
   ],
   "window": {
     "backgroundTextStyle": "dark",

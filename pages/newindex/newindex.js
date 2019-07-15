@@ -13,12 +13,24 @@ Page({
       img: "avatar.png",
       title: "未来电竞人才需求200万 薪资为拼滚工资1-3倍 引网友热议",
       soure: "新华网",
-      time: 134,
+      date: 134,
+      id:"",
     }],
+    topNews: {
+      img: "",
+      title: "",
+      soure: "",
+      date: "",
+      id:"",
+    },
     type: ['国内', '国际', '军事', '体育', '娱乐', '其它'],
     typeCode: ['gn', 'gj', 'js', 'ty', 'yl', 'qt'],
     statusBarHeight: 0,
     navBarHeight: 0,
+  },
+
+  upper: function (e) {
+    console.log(e)
   },
 
   // 滚动切换标签样式
@@ -108,12 +120,26 @@ Page({
 
   setTop:function(e){
     console.log(e)
-    let title = e.data.result[0].title
-    console.log("title:" + title)
 
-    // let nowHour = new Date().getHours()
-    // let forecast = res.data.result.forecast
-    // let hourWeather = []
+    let title = e.data.result[0].title
+    let date = e.data.result[0].date
+    let source = e.data.result[0].source
+    let img = e.data.result[0].firstImage
+    let id = e.data.result[0].id
+    
+    var topTitle = "topNews.title"
+    var topDate = "topNews.date"
+    var topSource = "topNews.source"
+    var topImg = "topNews.img"
+    var topId = "topNews.id"
+
+    this.setData({
+      [topTitle]:title,
+      [topDate]: date, 
+      [topSource]: source,
+      [topImg]: "https:"+img,
+      [id]: id
+    })
 
     // //设置每小时天气列表
     // for (let i = 0; i < 8; i += 1) {
@@ -123,6 +149,13 @@ Page({
     //     temp: forecast[i].temp + '°'
     //   })
     // }
+  },
+
+  clickTop:function(event){
+    console.log(event)
+    wx.navigateTo({
+      url: '/pages/content/content?id='+'id'
+    })
   }
 
   // footerTap: app.footerTap

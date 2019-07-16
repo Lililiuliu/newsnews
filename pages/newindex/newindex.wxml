@@ -1,44 +1,40 @@
-<view class="page">
-
-  <view class="bar">
-    <view class='statusBar' style='height: {{statusBarHeight}}px;'></view>
-    <view class='navBar' style='height: {{navBarHeight}}px;'>
-      <image class='logo' src='/guide/logo29.png' mode="widthFix"></image>
-      <text class="title">快读·资讯</text>
-    </view>
-    <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
-      <view class="tab-item {{currentTab==index?'active':''}}" data-current="{{index}}" bindtap="swichNav" wx:for="{{type}}" wx:key="{{index}}">{{item}}</view>
-    </scroll-view>
+<view class="bar">
+  <view class='statusBar' style='height: {{statusBarHeight}}px;'></view>
+  <view class='navBar' style='height: {{navBarHeight}}px;'>
+    <image class='logo' src='/guide/logo29.png' ></image>
+    <text class="title">快读·资讯</text>
   </view>
+  <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+    <view class="tab-item {{currentTab==index?'active':''}}" data-current="{{index}}" bindtap="swichNav" wx:for="{{type}}" wx:key="{{index}}">{{item}}</view>
+  </scroll-view>
+</view>
 
 
-  <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:{{winHeight}}rpx;margin-top:{{marginTop}}px" circular="true" >
-    <swiper-item wx:for="123456" wx:key="index">
+<swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:{{winHeight}}rpx;margin-top:{{marginTop}}px" circular="true">
+  <swiper-item wx:for="123456" wx:key="index">
 
-      <scroll-view scroll-y="true" class="scoll-h">
-        <view class="topNews">
-          <image class="topImgBg" src="{{topNews.img}}" mode='aspectFill'></image>
-          <image class="topImg" src="{{topNews.img}}" mode='top' mode='aspectFill' bindtap="clickTop" ></image>
-          <view class="mask"></view>
-          <view class="topTag">热门</view>
-          <view class="topTitle">{{topNews.title}}</view>
-          <view class="topInfo">
-            <view class="topSource">{{topNews.source}}</view>
-            <view class="topTime">{{topNews.date}}</view>
-          </view>
+    <scroll-view scroll-y="true" class="scoll-h" >
+      <view class="topNews">
+        <image class="topImgBg" src="{{topNews.img}}" mode='aspectFill'></image>
+        <image class="topImg" src="{{topNews.img}}" mode='top' mode='aspectFill' bindtap="clickTop"></image>
+        <view class="mask"></view>
+        <view class="topTag">热门</view>
+        <view class="topTitle">{{topNews.title}}</view>
+        <view class="topInfo">
+          <view class="topSource">{{topNews.source}}</view>
+          <view class="topTime">{{topNews.date}}</view>
         </view>
-        <view class="listItem" wx:for="123456789123123123123123123123123" wx:key="index">
-        
-            <view class="newsTitle">未来电竞人才需求200万 薪资为拼滚工资1-3倍 引网友热议</view>
-            <view class="listInfo">
-            <view class="newsSource">新华网</view>
-            <view class="newsTime">04:18</view>
-            </view>
-            <image class="newsImg" mode='aspectFill' src="/guide/timg3.jpeg"></image>
-            <view class="line"></view>
-          </view>
-      </scroll-view>
-    </swiper-item>
-  </swiper>
+      </view>
+      <view class="listItem" wx:for="123456789123123123123123123123123" wx:key="index">
 
-  </view>
+        <view class="newsTitle">未来电竞人才需求200万 薪资为拼滚工资1-3倍 引网友热议</view>
+        <view class="listInfo">
+          <view class="newsSource">新华网</view>
+          <view class="newsTime">04:18</view>
+        </view>
+        <image class="newsImg" mode='aspectFill' src="/guide/timg3.jpeg"></image>
+        <view class="line"></view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+</swiper>

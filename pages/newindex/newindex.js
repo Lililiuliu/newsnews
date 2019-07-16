@@ -17,7 +17,7 @@ Page({
       id:"",
     }],
     topNews: {
-      img: "",
+      img: null,
       title: "",
       soure: "",
       date: "",
@@ -27,10 +27,6 @@ Page({
     typeCode: ['gn', 'gj', 'js', 'ty', 'yl', 'qt'],
     statusBarHeight: 0,
     navBarHeight: 0,
-  },
-
-  upper: function (e) {
-    console.log(e)
   },
 
   // 滚动切换标签样式
@@ -55,6 +51,7 @@ Page({
 
   onLoad: function() {
     var that = this;
+    
     // 获取bar高度
     wx.getSystemInfo({
       success: function(res) {
@@ -135,9 +132,9 @@ Page({
 
     this.setData({
       [topTitle]:title,
-      [topDate]: date, 
+      [topDate]: date.slice(11,16), 
       [topSource]: source,
-      [topImg]: "https:"+img,
+      [topImg]: "http:"+img,
       [id]: id
     })
 
@@ -151,10 +148,11 @@ Page({
     // }
   },
 
+  //点击头图
   clickTop:function(event){
     console.log(event)
     wx.navigateTo({
-      url: '/pages/content/content?id='+'id'
+      // url: '/pages/content/content?id='+'id'
     })
   }
 

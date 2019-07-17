@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/newindex/newindex",
+    "pages/newindex/index",
     "pages/content/content"
   ],
   "window": {

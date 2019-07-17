@@ -134,7 +134,7 @@ Page({
       [topTitle]:title,
       [topDate]: date.slice(11,16), 
       [topSource]: source,
-      [topImg]: "http:"+img,
+      [topImg]: "http:"+img+".jepg",
       [id]: id
     })
 

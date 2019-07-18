@@ -11,12 +11,12 @@
 
 
 <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:{{winHeight}}rpx;margin-top:{{marginTop}}px" circular="true">
-  <swiper-item wx:for="123456" wx:key="index">
+  <swiper-item wx:for="{{type}}" wx:key="index">
 
     <scroll-view scroll-y="true" class="scoll-h" >
       <view class="topNews">
         <image class="topImgBg" src="{{topNews.img}}" mode='aspectFill'></image>
-        <image class="topImg" src="{{topNews.img}}" mode='top' mode='aspectFill' bindtap="clickTop"></image>
+        <image class="topImg" src="{{topNews.img}}" mode='aspectFill' bindtap="clickTop"></image>
         <view class="mask"></view>
         <view class="topTag">热门</view>
         <view class="topTitle">{{topNews.title}}</view>
@@ -25,14 +25,14 @@
           <view class="topTime">{{topNews.date}}</view>
         </view>
       </view>
-      <view class="listItem" wx:for="123456789123123123123123123123123" wx:key="index">
+      <view class="listItem" wx:for="{{newsList}}" wx:key="index">
 
-        <view class="newsTitle">未来电竞人才需求200万 薪资为拼滚工资1-3倍 引网友热议</view>
+        <view class="newsTitle">{{item.title}}</view>
         <view class="listInfo">
-          <view class="newsSource">新华网</view>
-          <view class="newsTime">04:18</view>
+          <view class="newsSource">{{item.source}}</view>
+          <view class="newsTime">{{item.date}}</view>
         </view>
-        <image class="newsImg" mode='aspectFill' src="/guide/timg3.jpeg"></image>
+        <image class="newsImg" mode='aspectFill' src="http://{{item.img}}"></image>
         <view class="line"></view>
       </view>
     </scroll-view>

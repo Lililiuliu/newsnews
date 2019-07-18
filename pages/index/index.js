@@ -10,10 +10,10 @@ Page({
     currentTab: 0, //预设当前项的值
     scrollLeft: 0, //tab标题的滚动条位置
     newsList: [{ //假数据
-      img: "avatar.png",
-      title: "未来电竞人才需求200万 薪资为拼滚工资1-3倍 引网友热议",
-      soure: "新华网",
-      date: 134,
+      img: "",
+      title: "",
+      soure: "",
+      date: "",
       id:"",
     }],
     topNews: {
@@ -23,21 +23,23 @@ Page({
       date: "",
       id:"",
     },
-    type: ['国内', '国际', '军事', '体育', '娱乐', '其它'],
-    typeCode: ['gn', 'gj', 'js', 'ty', 'yl', 'qt'],
+    type: ['国内', '国际', '财经', '娱乐', '军事', '体育','其它'],
+    typeCode: ['gn', 'gj', 'cj', 'yl', 'js', 'ty','other'],
     statusBarHeight: 0,
     navBarHeight: 0,
   },
 
-  // 滚动切换标签样式
+  // 滚动切换标签
   switchTab: function(e) {
+    console.log(e)
     this.setData({
       currentTab: e.detail.current
     });
-    // this.checkCor();
+    this.getData()
   },
 
-  // 点击标题切换当前页时改变样式
+
+  // 点击标题切换
   swichNav: function(e) {
     var cur = e.target.dataset.current;
     if (this.data.currentTaB == cur) {
@@ -47,6 +49,7 @@ Page({
         currentTab: cur
       })
     }
+    this.getData()
   },
 
   onLoad: function() {
@@ -103,20 +106,12 @@ Page({
 
     //获取接口数据
 
-    wx.request({
-      url: 'https://test-miniprogram.com/api/news/list',
-      data: {
-        type: typeCode[0]
-      },
-      success: res => {
-        that.setTop(res)
-      }
-    })
+    this.getData()
+
 
   },
 
   setTop:function(e){
-    console.log(e)
 
     let title = e.data.result[0].title
     let date = e.data.result[0].date
@@ -124,36 +119,71 @@ Page({
     let img = e.data.result[0].firstImage
     let id = e.data.result[0].id
     
-    var topTitle = "topNews.title"
-    var topDate = "topNews.date"
-    var topSource = "topNews.source"
-    var topImg = "topNews.img"
-    var topId = "topNews.id"
+    let topTitle = "topNews.title"
+    let topDate = "topNews.date"
+    let topSource = "topNews.source"
+    let topImg = "topNews.img"
+    let topId = "topNews.id"
 
     this.setData({
       [topTitle]:title,
       [topDate]: date.slice(11,16), 
       [topSource]: source,
-      [topImg]: "http:"+img+".jepg",
+      [topImg]: "http://"+img,
       [id]: id
     })
 
-    // //设置每小时天气列表
-    // for (let i = 0; i < 8; i += 1) {
-    //   hourWeather.push({
-    //     time: (i * 3 + nowHour) % 24 + "时",
-    //     iconPath: '/images/' + forecast[i].weather + '-icon.png',
-    //     temp: forecast[i].temp + '°'
-    //   })
-    // }
+  },
+
+  //获取列表数据
+  setList(e){
+
+    let newsList = e.data.result
+    let list = []
+
+    for (let i = 1; i < newsList.length; i += 1) {
+      list.push({
+        id: newsList[i].id,
+        title: newsList[i].title,
+        img: newsList[i].firstImage,
+        date: newsList[i].date.slice(11,16),
+        source: newsList[i].source
+      })
+    }
+
+    console.log(list)
+    this.setData({
+      newsList:list
+    })
   },
 
   //点击头图
-  clickTop:function(event){
+  clickTop(event){
     console.log(event)
     wx.navigateTo({
       // url: '/pages/content/content?id='+'id'
     })
+  },
+
+  // 获取数据
+  getData(callback){
+    let tab = this.data.currentTab
+    wx.request({
+      url: 'https://test-miniprogram.com/api/news/list',
+      data: {
+        type: this.data.typeCode[tab]
+      },
+
+      success: res => {
+        this.setTop(res)
+        this.setList(res)
+      },
+
+      complete: () => {
+        callback && callback()
+      }
+    })
+    
   }
 
   // footerTap: app.footerTap

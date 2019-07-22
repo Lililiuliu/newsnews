@@ -1,7 +1,7 @@
 <view class="bar">
   <view class='statusBar' style='height: {{statusBarHeight}}px;'></view>
   <view class='navBar' style='height: {{navBarHeight}}px;'>
-    <image class='logo' src='/guide/logo29.png' ></image>
+    <image class='logo' src='/guide/logo29.png'></image>
     <text class="title">快读·资讯</text>
   </view>
   <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
@@ -13,28 +13,33 @@
 <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:{{winHeight}}rpx;margin-top:{{marginTop}}px" circular="true">
   <swiper-item wx:for="{{type}}" wx:key="index">
 
-    <scroll-view scroll-y="true" class="scoll-h" >
-      <view class="topNews">
-        <image class="topImgBg" src="{{topNews.img}}" mode='aspectFill'></image>
-        <image class="topImg" src="{{topNews.img}}" mode='aspectFill' bindtap="clickTop"></image>
-        <view class="mask"></view>
-        <view class="topTag">热门</view>
-        <view class="topTitle">{{topNews.title}}</view>
-        <view class="topInfo">
-          <view class="topSource">{{topNews.source}}</view>
-          <view class="topTime">{{topNews.date}}</view>
+    <scroll-view scroll-y="true" class="scoll-h">
+      <navigator url="/pages/content/content?" hover-class="navi">
+        <view class="topNews">
+          <image class="topImgBg" src="{{topNews.img}}" mode='aspectFill'></image>
+          <image class="topImg" src="{{topNews.img}}" mode='aspectFill' bindtap="clickTop"></image>
+          <view class="mask"></view>
+          <view class="topTag">热门</view>
+          <view class="topTitle">{{topNews.title}}</view>
+          <view class="topInfo">
+            <view class="topSource">{{topNews.source}}</view>
+            <view class="topTime">{{topNews.date}}</view>
+          </view>
         </view>
-      </view>
-      <view class="listItem" wx:for="{{newsList}}" wx:key="index">
+      </navigator>
 
-        <view class="newsTitle">{{item.title}}</view>
-        <view class="listInfo">
-          <view class="newsSource">{{item.source}}</view>
-          <view class="newsTime">{{item.date}}</view>
+      <navigator url="/pages/content/content?id=1" hover-class="none" hover-stop-propagation="true">
+        <view class="listItem" wx:for="{{newsList}}" wx:key="index" hover-class="listhover">
+          <view class="newsTitle">{{item.title}}</view>
+          <view class="listInfo">
+            <view class="newsSource">{{item.source}}</view>
+            <view class="newsTime">{{item.date}}</view>
+          </view>
+          <image class="newsImg" mode='aspectFill' src="{{item.img}}"></image>
+          <view class="line"></view>
         </view>
-        <image class="newsImg" mode='aspectFill' src="http://{{item.img}}"></image>
-        <view class="line"></view>
-      </view>
+      </navigator>
+
     </scroll-view>
   </swiper-item>
 </swiper>

@@ -13,7 +13,6 @@ page {
   z-index: 99;
 }
 
-
 .logo {
   height: 29px;
   width: 29px;
@@ -25,7 +24,7 @@ page {
   color: white;
   font-size: 15px;
   font-weight: bold;
-  text-shadow: 0px 0px 3px rgba(0,0,0,.2);
+  text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
 }
 
 .navBar {
@@ -45,7 +44,7 @@ page {
   position: fixed;
   background-color: #2f93d5;
   left: 0;
-  text-shadow: 0px 0px 3px rgba(0,0,0,.2);
+  text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
 }
 
 .tab-item {
@@ -54,7 +53,6 @@ page {
   color: white;
   opacity: 0.8;
   font-weight: bold;
-
 }
 
 .tab-item.active {
@@ -98,8 +96,7 @@ page {
   height: 422rpx;
   filter: blur(1px);
   opacity: 0.2;
-  z-index: 0;  
-
+  z-index: 0;
 }
 
 .topImg {
@@ -113,7 +110,7 @@ page {
 }
 
 .mask {
-  background:linear-gradient(#00000000, #00000086);
+  background: linear-gradient(#00000000, #00000086);
   position: absolute;
   z-index: 1;
   left: 24rpx;
@@ -126,7 +123,7 @@ page {
 
 .topTag {
   position: absolute;
-  background-color:rgba(226, 60, 60, 0.7);
+  background-color: rgba(226, 60, 60, 0.7);
   color: white;
   font-size: 24rpx;
   line-height: 40rpx;
@@ -142,26 +139,26 @@ page {
 .topTitle {
   position: absolute;
   z-index: 3;
-  bottom:88rpx;
-  left:48rpx;
-  color:white;
+  bottom: 88rpx;
+  left: 48rpx;
+  color: white;
   width: 654rpx;
   font-size: 34rpx;
   line-height: 50rpx;
-  text-shadow: 0px 0px 3px rgba(0,0,0,0.2);
+  text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
 }
 
 .topInfo {
   position: absolute;
   z-index: 3;
-  bottom:48rpx;
-  left:48rpx;
+  bottom: 48rpx;
+  left: 48rpx;
   width: 654rpx;
   font-size: 24rpx;
   line-height: 34rpx;
-  color:white;
+  color: white;
   opacity: 0.8;
-  display:flex;
+  display: flex;
   flex-direction: row;
 }
 
@@ -184,12 +181,19 @@ page {
 
 .newsTitle {
   width: 458rpx;
+  height: 90rpx;
   left: 24rpx;
   margin-top: 20rpx;
   font-size: 32rpx;
   line-height: 45rpx;
   opacity: 0.8;
   position: absolute;
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .newsImg {
@@ -197,7 +201,7 @@ page {
   right: 24rpx;
   width: 220rpx;
   height: 130rpx;
-  margin-top:24rpx;
+  margin-top: 24rpx;
 }
 
 .line {
@@ -210,7 +214,7 @@ page {
   opacity: 0.2;
 }
 
-.listInfo{
+.listInfo {
   position: absolute;
   display: flex;
   flex-direction: row;
@@ -221,8 +225,15 @@ page {
   opacity: 0.5;
 }
 
-.newsTime{
+.newsTime {
   margin-left: 24rpx;
 }
 
 
+.navi {
+  opacity: 0.5;
+}
+
+.listhover {
+  background-color: red;
+}

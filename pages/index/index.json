@@ -3,5 +3,6 @@
   "navigationStyle": "custom",
   "disableScroll": false,
   "enablePullDownRefresh": true,
-  "backgroundTextStyle": "dark"
+  "backgroundTextStyle": "dark",
+  "navigationBarTextStyle": "white"
 }

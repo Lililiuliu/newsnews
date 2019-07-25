@@ -1,7 +1,8 @@
-page {
+.page {
   height: 100%;
   display: flex;
   flex-direction: column;
+  background-color: black;
 }
 
 .bar {
@@ -229,11 +230,12 @@ page {
   margin-left: 24rpx;
 }
 
-
 .navi {
-  opacity: 0.5;
+  background-color: rgba(0, 0, 0, 0.1);
+  opacity: 0.7;
 }
 
 .listhover {
-  background-color: red;
+  background-color: rgba(0, 0, 0, 0.1);
+  opacity: 0.7;
 }

@@ -15,8 +15,6 @@ Page({
     this.setData({
       id: options.id
     })
-
-    console.log(this.data.id)
   },
 
 

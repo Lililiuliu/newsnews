@@ -3,7 +3,7 @@ var app = getApp();
 Page({
 
   data: {
-    winHeight: "", //窗口高度
+    swiperHeight: "", //窗口高度
     currentTab: 0, //预设当前项的值
     scrollLeft: 0, //tab标题的滚动条位置
     newsList: [{ 
@@ -33,6 +33,7 @@ Page({
       currentTab: e.detail.current
     });
     this.getData()
+    this.getSwiperHeight()
   },
 
 
@@ -68,19 +69,7 @@ Page({
       }
     })
 
-    //  高度自适应
-    wx.getSystemInfo({
-      success: function(res) {
-        const clientHeight = res.windowHeight,
-          clientWidth = res.windowWidth,
-          rpxR = 750 / clientWidth;
-        const calc = clientHeight * rpxR - 180;
-        console.log(calc)
-        that.setData({
-          winHeight: calc
-        });
-      }
-    });
+
 
     // 获取scrollview的margin-top
     const query = wx.createSelectorQuery();
@@ -89,7 +78,6 @@ Page({
       that.setData({
         marginTop: res[0].bottom
       })
-      console.log(res[0].bottom)
     })
 
     var typeCode = this.data.typeCode
@@ -102,6 +90,9 @@ Page({
 
   },
 
+
+  
+  //头图数据对接
   setTop:function(e){
 
     let title = e.data.result[0].title
@@ -132,7 +123,7 @@ Page({
 
   },
 
-  //获取列表数据
+  //列表数据对接
   setList(e){
 
     let newsList = e.data.result
@@ -171,9 +162,27 @@ Page({
     })
   },
 
-  // 获取数据
+  // 下拉刷新 
+  onPullDownRefresh() {
+    this.getData(() => {
+      wx.stopPullDownRefresh()
+      wx.showToast({
+        title: '刷新成功',
+        icon: 'success',
+        duration: 2000
+      })
+    })
+  },
+
+  // 加载数据
   getData(callback){
+   
     let tab = this.data.currentTab
+
+    wx.showLoading({
+      title: '加载中',
+    })
+
     wx.request({
       url: 'https://test-miniprogram.com/api/news/list',
       data: {
@@ -183,6 +192,8 @@ Page({
       success: res => {
         this.setTop(res)
         this.setList(res)
+        wx.hideLoading()
+        this.getSwiperHeight()
       },
 
       complete: () => {
@@ -190,6 +201,16 @@ Page({
       }
     })
     
+  },
+
+  //swiper高度
+  getSwiperHeight(){
+    const listLength = this.data.newsList.length
+    const cal = 422 + 188 * listLength
+
+    this.setData({
+      swiperHeight: cal
+    })
   }
 
 })

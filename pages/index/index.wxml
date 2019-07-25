@@ -10,12 +10,12 @@
 </view>
 
 
-<swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:{{winHeight}}rpx;margin-top:{{marginTop}}px" circular="true">
-  <swiper-item wx:for="{{type}}" wx:key="index">
+<swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:{{swiperHeight}}rpx;margin-top:{{marginTop}}px;" circular="true">
+  <swiper-item wx:for="{{type}}" wx:key="index" >
 
-    <scroll-view scroll-y="true" class="scoll-h">
+    <view scroll-y="true" class="scoll-h">
       <navigator url="/pages/content/content?" hover-class="navi">
-        <view class="topNews">
+        <view class="topNews" >
           <image class="topImgBg" src="{{topNews.img}}" mode='aspectFill'></image>
           <image class="topImg" src="{{topNews.img}}" mode='aspectFill' bindtap="clickTop"></image>
           <view class="mask"></view>
@@ -40,6 +40,6 @@
         </view>
       </navigator>
 
-    </scroll-view>
+    </view>
   </swiper-item>
 </swiper>

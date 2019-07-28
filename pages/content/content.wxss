@@ -1,1 +1,83 @@
-/* pages/content/content.wxss */
+
+.bar {
+  background:white;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  z-index: 99;
+}
+
+.navBar {
+  display: flex;
+  align-items: center;
+  left: 0;
+}
+
+.back {
+  height: 29px;
+  width: 29px;
+  margin-left: 10rpx;
+  margin-right: 5rpx;
+}
+
+.title {
+  font-size: 15px;
+  opacity: 0.8;
+}
+
+.view{
+  margin-top: 170rpx;
+  margin-left: 24rpx;
+  margin-right: 24rpx;
+}
+
+.bigTitle {
+  font-size: 44rpx;
+  opacity: 0.7;
+  text-align:justify;
+}
+
+.view {
+ display: flex;
+ flex-direction: column;
+}
+
+.info {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  opacity: 0.4;
+  font-size: 28rpx;
+  margin-top: 15rpx;
+}
+.date {
+  flex-grow: 1;
+  margin-left: 20rpx;
+}
+
+.content {
+  margin-top: 30rpx;
+}
+
+.img {
+  width: 100%;
+}
+
+.p{
+  font-size: 30rpx;
+  line-height: 42rpx;
+  opacity: 0.8;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.strong {
+  font-size: 32rpx;
+  line-height: 45rpx;
+  font-weight: bolder;
+  opacity: 0.8;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+}
+

@@ -11,11 +11,11 @@
 
 
 <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:{{swiperHeight}}rpx;margin-top:{{marginTop}}px;" circular="true">
-  <swiper-item wx:for="{{type}}" wx:key="index" >
+  <swiper-item wx:for="{{type}}" wx:key="index">
 
     <view scroll-y="true" class="scoll-h">
-      <navigator url="/pages/content/content?" hover-class="navi">
-        <view class="topNews" >
+      <navigator url="/pages/content/content?id={{topNews.id}}" hover-class="navi">
+        <view class="topNews">
           <image class="topImgBg" src="{{topNews.img}}" mode='aspectFill'></image>
           <image class="topImg" src="{{topNews.img}}" mode='aspectFill' bindtap="clickTop"></image>
           <view class="mask"></view>
@@ -28,17 +28,20 @@
         </view>
       </navigator>
 
-      <navigator url="/pages/content/content?id=1" hover-class="none" hover-stop-propagation="true">
-        <view class="listItem" wx:for="{{newsList}}" wx:key="index" hover-class="listhover">
+
+      <view class="listItem" wx:for="{{newsList}}" wx:key="index" hover-class="listhover" >
+        <navigator url="/pages/content/content?id={{item.id}}" hover-class="none" >
           <view class="newsTitle">{{item.title}}</view>
           <view class="listInfo">
             <view class="newsSource">{{item.source}}</view>
             <view class="newsTime">{{item.date}}</view>
           </view>
           <image class="newsImg" mode='aspectFill' src="{{item.img}}"></image>
+
           <view class="line"></view>
-        </view>
-      </navigator>
+        </navigator>
+      </view>
+
 
     </view>
   </swiper-item>

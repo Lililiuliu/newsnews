@@ -3,7 +3,7 @@ var app = getApp();
 Page({
 
   data: {
-    swiperHeight: "", //窗口高度
+    swiperHeight: "", //swiper高度
     currentTab: 0, //预设当前项的值
     scrollLeft: 0, //tab标题的滚动条位置
     newsList: [{ 
@@ -16,7 +16,7 @@ Page({
     topNews: {
       img: null,
       title: "",
-      soure: "",
+      source: "",
       date: "",
       id:"",
     },
@@ -28,7 +28,7 @@ Page({
 
   // 滚动切换标签
   switchTab: function(e) {
-    console.log(e)
+
     this.setData({
       currentTab: e.detail.current
     });
@@ -114,12 +114,14 @@ Page({
     const topId = "topNews.id"
 
     this.setData({
-      [topTitle]:title,
-      [topDate]: date.slice(11,16), 
+      [topTitle]: title,
+      [topDate]: date.slice(11, 16), 
       [topSource]: source,
       [topImg]: img,
-      [id]: id
+      [topId]: id
     })
+
+    
 
   },
 
@@ -148,19 +150,12 @@ Page({
       })
     }
 
-    console.log(list)
     this.setData({
       newsList:list
     })
   },
 
-  //点击头图
-  clickTop(event){
-    console.log(event)
-    wx.navigateTo({
-      // url: '/pages/content/content?id='+'id'
-    })
-  },
+ 
 
   // 下拉刷新 
   onPullDownRefresh() {

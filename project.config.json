@@ -22,7 +22,7 @@
 		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.7.5",
+	"libVersion": "2.7.7",
 	"appid": "wx3d855b9737bc545c",
 	"projectname": "newsnews",
 	"debugOptions": {

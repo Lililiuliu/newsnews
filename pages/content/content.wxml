@@ -1,2 +1,17 @@
-<!--pages/content/content.wxml-->
-<text>pages/content/content.wxml</text>
+<view class="bar">
+  <view class='statusBar' style='height: {{statusBarHeight}}px;'></view>
+  <view class='navBar' style='height: {{navBarHeight}}px;'>
+    <image class='back' src='/guide/arrow-back.png' bindtap="back"></image>
+    <text class="title">快读·资讯</text>
+  </view>
+  <progress class='progress' percent="{{percent}}" activeColor="#36a8ec" backgroundColor="#fff" stroke-width="1" active="true" />
+</view>
+<view class="view">
+  <view class="bigTitle">{{info.title}}</view>
+  <view class="info">
+    <view class='source'>{{info.source}}</view>
+    <view class='date'>{{info.time}}</view>
+    <view class='visited'>{{info.visited}}</view>
+  </view>
+  <rich-text class='content' nodes="{{info.content}}" bindtap="tap" ></rich-text>
+</view>
